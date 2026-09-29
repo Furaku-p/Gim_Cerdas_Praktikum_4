@@ -135,8 +135,10 @@ public class AStarPathfinder : MonoBehaviour
                     moveCost = 10;
                 }
 
+                //Challenge 2
                 int tentativeGCost =
-                    currentNode.gCost + moveCost;
+                    currentNode.gCost +
+                    moveCost * neighbor.terrainCost;
 
                 if (tentativeGCost <
                     neighbor.gCost)

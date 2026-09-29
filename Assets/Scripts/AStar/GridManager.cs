@@ -11,6 +11,14 @@ public class GridManager : MonoBehaviour
     [Header("Obstacle Detection")]
     public LayerMask obstacleMask;
 
+
+    //Challenge 2
+    [Header("Terrain Cost")]
+    public LayerMask mudMask;
+    public int mudCost = 3;
+    public LayerMask dangerMask;
+    public int dangerCost = 10;
+
     [Header("Visualization")]
     public bool showGrid = true;
     public float visualHeight = 0.05f;
@@ -57,6 +65,33 @@ public class GridManager : MonoBehaviour
                     worldPosition,
                     walkable
                 );
+
+                //Challenge 2
+                if (Physics.CheckBox(
+                    worldPosition + Vector3.up * 0.5f,
+                    new Vector3(
+                        cellSize * 0.4f,
+                        0.45f,
+                        cellSize * 0.4f),
+                    Quaternion.identity,
+                    mudMask
+                ))
+                {
+                    node.terrainCost = mudCost;
+                }
+
+                if (Physics.CheckBox(
+                    worldPosition + Vector3.up * 0.5f,
+                    new Vector3(
+                        cellSize * 0.4f,
+                        0.45f,
+                        cellSize * 0.4f),
+                    Quaternion.identity,
+                    dangerMask
+                ))
+                {
+                    node.terrainCost = dangerCost;
+                }
 
                 grid[x, y] = node;
 

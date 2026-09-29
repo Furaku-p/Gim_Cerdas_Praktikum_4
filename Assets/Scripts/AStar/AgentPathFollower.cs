@@ -25,6 +25,21 @@ public class AgentPathFollower : MonoBehaviour
 
     private void Update()
     {
+        if (pathfinder == null)
+        {
+            return;
+        }
+
+        // Challenge 3
+        if (path != pathfinder.currentPath)
+        {
+            path = pathfinder.currentPath;
+            currentIndex = 0;
+
+            transform.position =
+                pathfinder.startMarker.position;
+        }
+
         if (path == null ||
             path.Count == 0 ||
             currentIndex >= path.Count)

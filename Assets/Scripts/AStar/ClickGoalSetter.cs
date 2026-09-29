@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+//Challenge 3
 public class ClickGoalSetter : MonoBehaviour
 {
     public Camera mainCamera;

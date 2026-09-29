@@ -9,6 +9,9 @@ public class GridNode
 
     public bool walkable;
 
+    //Challenge 2
+    public int terrainCost = 1;
+
     public int gCost;
     public int hCost;
 
